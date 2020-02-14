@@ -1,5 +1,13 @@
 node_modules
 
+package-lock.json
+
+client/dist/bundle.js
+
+config.js
+
 .history/
 
 client/.DS_Store
+
+database/Mongodb/files
