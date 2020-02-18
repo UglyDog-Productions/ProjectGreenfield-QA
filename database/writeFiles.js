@@ -17,7 +17,6 @@ id, product_id, body, date_written, asker_name, asker_email, reported, helpful
 [ 'id', 'product_id', 'body', 'date_written', 'asker_name', 'asker_email', 'reported', 'helpful' ]
 
 */
-
 const csv = require('fast-csv');
 const path = require('path');
 const fs = require('fs');
@@ -53,21 +52,7 @@ const rowTwo = [
   4
 ];
 
-const data = [headers, row, rowTwo];
-const addQuotes = {
-  body: true,
-  date_written: true,
-  asker_name: true,
-  asker_email: true
-};
-// const options = { headers: true, quoteHeaders: false, quoteColumns: true };
-// csv.write(rows).pipe(process.stdout);
-
-const stream = fs.createWriteStream(
-  path.resolve(__dirname, 'dummyData', 'options.csv')
-);
-
-const csvStream = csv.format({
+const myOptions = {
   headers: true,
   quoteHeaders: false,
   quoteColumns: {
@@ -76,26 +61,17 @@ const csvStream = csv.format({
     asker_name: true,
     asker_email: true
   }
-});
+};
 
-// csvStream.write([headers, row, rowTwo]).pipe(stream); // not a function
-// csv.writeToStream(process.stdout, rows);
+const myPath = path.resolve(__dirname, 'dummyData', 'options.csv');
+csv
+  .writeToPath(myPath, [headers, row, rowTwo], myOptions)
+  .on('error', (err) => console.error(err))
+  .on('finish', () => console.log('Done writing.'));
 
-csvStream.pipe(stream);
-// .on('end', process.exit) ?
+// const stream = fs.createWriteStream(
+//   path.resolve(__dirname, 'dummyData', 'options.csv')
+// );
 
-csvStream.write(headers);
-csvStream.write(row);
-csvStream.write(rowTwo);
-csvStream.end();
-
-// csv
-//   .writeToPath(
-//     path.resolve(__dirname, 'dummyData', 'options.csv'),
-//     data,
-//     options
-//   )
-//   .on('error', (err) => console.error(err))
-//   .on('finish', () => console.log('Done writing.'));
-
+// csv.writeToStream(stream, [headers, row, rowTwo], myOptions);
 // .on --> event handler
