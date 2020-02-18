@@ -10,4 +10,6 @@ config.js
 
 client/.DS_Store
 
-database/Mongodb/files
+database/files
+
+database/dummyData

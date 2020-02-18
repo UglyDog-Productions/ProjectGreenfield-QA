@@ -1,7 +1,13 @@
+Setup:
 Before starting run: npm install
 
+Recommended Extensions:
+Install ESLint
+Intall Prettier
+Install Lorem Ipsum
+
+Scripts:
 to start server run: npm start
 to start webpack run: npm run react-dev
-
-if needed for React Router run: npm install --save react-router-dom
-if needed for Sass (the css config): npm install sass
+to start both server and webpack: npm run dev:start
+to run dummy data generation: npm run write
