@@ -11,7 +11,8 @@
     "test": "jest --config ./jest.config.json",
     "test:watch": "npm run test -- --watch",
     "lint": "eslint",
-    "write": "node database/writeFiles.js"
+    "write": "node database/writeFiles.js",
+    "fake": "node database/fakeData.js"
   },
   "keywords": [],
   "author": "",
@@ -53,6 +54,7 @@
     "axios": "^0.19.2",
     "css-loader": "^3.4.2",
     "csv-parse": "^4.8.5",
+    "faker": "^4.1.0",
     "fast-csv": "^4.1.0",
     "moment": "^2.24.0",
     "mongoose": "^5.8.12",

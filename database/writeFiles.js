@@ -63,15 +63,27 @@ const myOptions = {
   }
 };
 
-const myPath = path.resolve(__dirname, 'dummyData', 'options.csv');
+const csvPath = path.resolve(__dirname, 'dummyData', 'options.csv');
 csv
-  .writeToPath(myPath, [headers, row, rowTwo], myOptions)
+  .writeToPath(csvPath, [headers, row, rowTwo], myOptions)
   .on('error', (err) => console.error(err))
   .on('finish', () => console.log('Done writing.'));
 
-// const stream = fs.createWriteStream(
-//   path.resolve(__dirname, 'dummyData', 'options.csv')
-// );
-
-// csv.writeToStream(stream, [headers, row, rowTwo], myOptions);
 // .on --> event handler
+
+/*
+const filePath = path.resolve(__dirname, 'dummyData', 'options.csv');
+
+const writeableStream = fs.createWriteStream(filePath)
+const csvReadableStream = csv.format(myOptions)
+csvReadableStream.pipe(writeableStream)
+
+csvReadableStream.write(headers);
+csvReadableStream.write(row);
+csvReadableStream.write(rowTwo);
+csvReadableStream.end();
+
+// OR
+
+csv.writeToStream(stream, [headers, row, rowTwo], myOptions);
+*/
