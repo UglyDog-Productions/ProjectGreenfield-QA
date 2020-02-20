@@ -4,7 +4,6 @@ Before starting run: npm install
 Recommended Extensions:
 Install ESLint
 Intall Prettier
-Install Lorem Ipsum
 
 Scripts:
 to start server run: npm start
