@@ -1,13 +1,4 @@
-/*
-To create dummy data
-id, product_id, body, date_written, asker_name, asker_email, reported, helpful
-1,1,"What fabric is the top made of?","2018-01-04","yankeelover","first.last@gmail.com",0,1
-
-*/
-
 const faker = require('faker');
-const path = require('path');
-const fs = require('fs');
 
 const questionHeaders = [
   'id',
@@ -41,6 +32,6 @@ const date = faker.date.between(2015, 2019); // 2015-11-22T18:47:25.333Z
 const reported = faker.random.number(1); // 0 or 1
 const helpful = faker.random.number({ min: 0, max: 10 }); // 0, 5, 9, etc...
 
-const test = faker.date.between(1, 2);
+const test = faker.hacker.phrase();
 
 console.log(test);

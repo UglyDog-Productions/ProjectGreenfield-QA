@@ -17,7 +17,7 @@ const qHeaders = [
 const makeRow = (id = 1) => {
   const row = [
     id,
-    faker.random.number({ min: 1, max: 100 }),
+    faker.random.number({ min: 1, max: 100000 }),
     `${faker.lorem.words(4)}?`,
     faker.date.between(2015, 2019),
     faker.internet.userName(),
