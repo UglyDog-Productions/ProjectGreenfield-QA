@@ -6,13 +6,13 @@ const Queries = require('../database/Mongodb/queries.js');
 const app = express();
 const port = 3000;
 app.use(bodyParser.json());
-app.use(express.static(`${__dirname}/../client/dist`));
+app.use(express.static(`${__dirname}/../client/dist/index.html`));
 
 const { findQuestions, findAnswers, addQuestion, helpfulQ, reportQ } = Queries;
 
 app.get('/qa/:productId', async (req, res) => {
   const { productId } = req.params;
-  console.log(`productId: ${productId}`);
+  console.log(`received GET request for productId: ${productId}`);
 
   try {
     const querydb = await findQuestions(productId);

@@ -17,7 +17,7 @@ const findQuestions = async (productId) => {
 const addQuestion = async (productId, body, name, email) => {
   console.log('adding question.....');
 
-  const addOne = await Test.create({
+  const addOne = await Questions.create({
     id: questionCount++,
     product_id: productId,
     body,
@@ -33,7 +33,7 @@ const addQuestion = async (productId, body, name, email) => {
 const helpfulQ = async (questionId) => {
   console.log(`marking question ${questionId} helpful....`);
 
-  const increment = await Test.updateOne(
+  const increment = await Questions.updateOne(
     { id: questionId },
     { $inc: { helpful: 1 } }
   );
@@ -43,7 +43,7 @@ const helpfulQ = async (questionId) => {
 const reportQ = async (questionId) => {
   console.log(`reporting question ${questionId}`);
 
-  const report = await await Test.updateOne(
+  const report = await await Questions.updateOne(
     { id: questionId },
     { reported: 1 }
   );
@@ -69,14 +69,3 @@ module.exports = {
   reportQ,
   findAnswers
 };
-
-// Questions.insertOne({
-//   id: 100000001,
-//   product_id: 5,
-//   body: 'Testing Adding to my db with insertOne',
-//   date_written: '2020-02-21',
-//   asker_name: 'Mr Muffin Man',
-//   asker_email: 'theIllestMuffin@doughyboi.com',
-//   reported: 0,
-//   helpful: 50
-// });

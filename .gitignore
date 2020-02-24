@@ -4,6 +4,8 @@ client/dist/bundle.js
 
 config.js
 
+newrelic.js
+
 .history/
 
 client/.DS_Store
