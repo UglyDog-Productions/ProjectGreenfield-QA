@@ -4,7 +4,7 @@ import Question from '../Question/Question.jsx';
 import AddQuestion from '../AddQuestion/AddQuestion.jsx';
 import './QuestionList.scss';
 
-const url = 'http://3.134.102.30/qa';
+const url = 'https://localhost:3000/qa';
 
 export default class QuestionList extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ export default class QuestionList extends Component {
       allQuestions: [],
       someQuestions: [],
       showing: 2,
-      search: '',
+      search: ''
     };
   }
 
@@ -24,7 +24,7 @@ export default class QuestionList extends Component {
       const getQuestions = await axios.get(`${url}/${productId}`);
       this.setState({
         someQuestions: getQuestions.data.results,
-        allQuestions: getQuestions.data.results,
+        allQuestions: getQuestions.data.results
       });
     } catch (error) {
       console.error(error);
@@ -37,11 +37,11 @@ export default class QuestionList extends Component {
     if (prevProps.productId !== productId) {
       this.setState(
         {
-          productId,
+          productId
         },
         () => {
           return this.componentDidMount();
-        },
+        }
       );
     }
   }
@@ -58,7 +58,7 @@ export default class QuestionList extends Component {
     return allQuestions
       .slice()
       .filter((obj) =>
-        obj.question_body.toLowerCase().includes(search.toLowerCase()),
+        obj.question_body.toLowerCase().includes(search.toLowerCase())
       );
   };
 

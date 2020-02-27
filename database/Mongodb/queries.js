@@ -1,19 +1,18 @@
 const QandA = require('./QA.js');
 
 const { Questions, Answers, Photos, Test } = QandA;
-let questionCount = 1;
-
-const findQuestions = async (productId) => {
+const findQuestions = async (productId, amount = 5) => {
   try {
-    const result = await Questions.find({ product_id: productId }).sort({
-      helpful: -1
-    });
+    const result = await Questions.find({ product_id: productId })
+      .limit(amount)
+      .sort({ helpful: -1 });
     return result;
   } catch (error) {
     console.error(error);
   }
 };
 
+let questionCount = 1;
 const addQuestion = async (productId, body, name, email) => {
   console.log('adding question.....');
 
@@ -50,12 +49,12 @@ const reportQ = async (questionId) => {
   console.log(`question ${questionId} reported`);
 };
 
-// replicate mongoDB -> db.answers.find({"question_id":1}).sort({ "helpful": -1 })
-const findAnswers = async (questionId) => {
+// replicate mongoDB -> db.answers.find({"question_id": 1}).limit(5).sort({ "helpful": -1 }).pretty()
+const findAnswers = async (questionId, amount = 5) => {
   try {
-    const result = await Answers.find({ question_id: questionId }).sort({
-      helpful: -1
-    });
+    const result = await Answers.find({ question_id: questionId })
+      .limit(amount)
+      .sort({ helpful: -1 });
     return result;
   } catch (error) {
     console.error(error);

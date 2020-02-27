@@ -10,7 +10,7 @@ class QuestionsAndAnswers extends Component {
     super(props);
     this.state = {
       productId: this.props.productId,
-      productDetails: {},
+      productDetails: {}
     };
   }
 
@@ -23,14 +23,15 @@ class QuestionsAndAnswers extends Component {
   componentDidUpdate(prevProps) {
     const { productId } = this.props;
     if (prevProps.productId !== productId) {
+      // this.setState({ productId }, () => this.componentDidMount());
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState(
         {
-          productId,
+          productId
         },
         () => {
           return this.componentDidMount();
-        },
+        }
       );
     }
   }

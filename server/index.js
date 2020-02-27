@@ -1,24 +1,32 @@
+const newrelic = require('newrelic');
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('../database/Mongodb/index.js');
 const Queries = require('../database/Mongodb/queries.js');
 
 const app = express();
-const port = 3000;
+app.use(cors());
+
 app.use(bodyParser.json());
-app.use(express.static(`${__dirname}/../client/dist/index.html`));
+app.use(express.static(`${__dirname}/../client/dist`));
+const port = 3000;
 
 const { findQuestions, findAnswers, addQuestion, helpfulQ, reportQ } = Queries;
 
 app.get('/qa/:productId', async (req, res) => {
   const { productId } = req.params;
   console.log(`received GET request for productId: ${productId}`);
+  // console.time('processing time');
 
   try {
     const querydb = await findQuestions(productId);
+    // console.timeEnd('processing time');
+    res.status(200);
     res.send(querydb);
   } catch (error) {
     console.error(error);
+    res.status(404);
     res.send(error);
   }
 });
@@ -26,9 +34,11 @@ app.get('/qa/:productId', async (req, res) => {
 app.get('/qa/:questionId/answers', async (req, res) => {
   const { questionId } = req.params;
   console.log(`received GET request for questionId: ${questionId}`);
+  // console.time('processing time');
 
   try {
     const querydb = await findAnswers(questionId);
+    // console.timeEnd('processing time');
     res.status(200);
     res.send(querydb);
   } catch (error) {

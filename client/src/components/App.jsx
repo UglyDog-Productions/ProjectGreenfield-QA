@@ -9,14 +9,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: 50,
+      productId: 1
     };
   }
 
   changeProduct = (e, newId) => {
     e.preventDefault();
     this.setState({
-      productId: newId,
+      productId: newId
     });
   };
 
