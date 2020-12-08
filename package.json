@@ -59,7 +59,7 @@
     "csv-parse": "^4.8.5",
     "express": "^4.17.1",
     "faker": "^4.1.0",
-    "fast-csv": "^4.1.0",
+    "fast-csv": "^4.3.6",
     "moment": "^2.24.0",
     "mongoose": "^5.8.12",
     "newrelic": "^6.4.1",
